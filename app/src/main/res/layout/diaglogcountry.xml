@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical"
+    >
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textStyle="bold"
+            android:textSize="9pt"
+            android:layout_marginTop="20px"
+            android:layout_marginBottom="20px"
+            android:text="Thông tin về quốc gia: "
+            android:textColor="#00BCD4"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="9pt"
+            android:layout_marginTop="20px"
+            android:layout_marginBottom="20px"
+            android:textColor="#00BCD4"
+            android:text="Việt Nam" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="15px"
+            android:layout_width="300px"
+            android:layout_height="200px"
+            android:scaleType="fitXY"
+            android:src="@drawable/vietnam" />
+    </LinearLayout>
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        >
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quốc gia: "
+                android:textStyle="bold"
+                android:layout_marginBottom="10px"
+                android:layout_marginTop="10px"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Việt Nam"
+                android:layout_marginBottom="10px"
+                android:layout_marginTop="10px"/>
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dân số: "
+                android:textStyle="bold"
+                android:layout_marginBottom="10px"
+                android:layout_marginTop="10px"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100000"
+                android:layout_marginBottom="10px"
+                android:layout_marginTop="10px"
+                />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Diện tích: "
+                android:textStyle="bold"
+                android:layout_marginBottom="10px"
+                android:layout_marginTop="10px"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="123.4"
+                android:layout_marginBottom="10px"
+                android:layout_marginTop="10px"
+                />
+        </TableRow>
+
+    </TableLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="QUAY LẠI TRANG CHỦ"
+        android:background="#FF9800"
+        />
+
+</LinearLayout>
