@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements API {
     @Override
     public void setArrayListJson(ArrayList arrayList) throws JSONException {
         this.arrayCountry=arrayList;
-        //Toast.makeText(this,arrayCountry.toString(),Toast.LENGTH_LONG).show();
+        Toast.makeText(this,arrayCountry.toString(),Toast.LENGTH_LONG).show();
         countryAdapter.notifyDataSetChanged();
     }
 }

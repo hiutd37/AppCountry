@@ -47,10 +47,24 @@ public class CountryAPI extends AsyncTask<String, String, ArrayList> {
 
     @Override
     protected ArrayList doInBackground(String... urls) {
+
+        try {
+           JSONArray jsonArray =new JSONArray();
+           jsonArray=getJSONData(urls[0]);
+
+            return convertToArrayList(jsonArray);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private JSONArray getJSONData(String urls) {
         HttpURLConnection connection = null;
         BufferedReader reader = null;
-        try {
-            URL url = new URL(urls[0]);
+        try{
+            URL url = new URL(urls);
             connection = (HttpURLConnection) url.openConnection();
 
             InputStream stream = connection.getInputStream();
@@ -70,11 +84,7 @@ public class CountryAPI extends AsyncTask<String, String, ArrayList> {
             JSONObject object=new JSONObject(data);//Lấy object của Json
             jsonArray=object.getJSONArray("geonames");
 
-
-            return convertToArrayList(jsonArray);
-
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
+            return jsonArray;
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {
