@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity"
+    android:background="#ffffff"
     android:layout_marginLeft="10px"
     android:layout_marginRight="10px"
     >
@@ -17,33 +18,50 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="QUỐC GIA"
-        android:textColor="#00BCD4"
+        android:textColor="#FF9800"
         android:textSize="10pt"
         android:textStyle="bold" />
-
+    <ImageView
+        android:layout_width="250px"
+        android:layout_height="230px"
+        android:scaleType="fitXY"
+        android:src="@drawable/diacau"
+        android:layout_gravity="center"
+        />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Nhập tên quốc gia: "
         android:textSize="8pt"
         android:textStyle="bold" />
-
+<LinearLayout
+    android:layout_marginTop="5px"
+    android:layout_marginBottom="5px"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal">
     <EditText
         android:id="@+id/editTextCountry"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="70px"
+        android:layout_weight="1"
         android:ems="10"
+        android:drawableLeft="@drawable/search"
+        android:background="@drawable/edittextbackground"
         android:hint="Nhập tên nước"
-        android:inputType="textPersonName" />
+        android:inputType="textCapSentences" />
 
     <Button
         android:id="@+id/btnXacNhan"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FF9800"
+        android:layout_width="wrap_content"
+        android:layout_height="70px"
+        android:background="@drawable/buttonbackground"
         android:gravity="center"
         android:onClick="LayGiaTri"
+        android:textColor="#ffffff"
         android:text="Tìm kiếm" />
+</LinearLayout>
 
     <ListView
         android:id="@+id/listView"
