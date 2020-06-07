@@ -102,9 +102,12 @@ public class MainActivity extends AppCompatActivity implements API {
             }
         }
         //Toast.makeText(this,filterCountry.toString(),Toast.LENGTH_LONG).show();
-        countryAdapter = new CountryAdapter(this,R.layout.item,filterCountry);
-        listView.setAdapter(countryAdapter);
-        countryAdapter.notifyDataSetChanged();
+//        countryAdapter = new CountryAdapter(this,R.layout.item,filterCountry);
+//        listView.setAdapter(countryAdapter);
+//        countryAdapter.notifyDataSetChanged();
+        countryAdapter.clear();
+        countryAdapter.addAll(filterCountry);
+        listView.invalidateViews();
     }
 
 
