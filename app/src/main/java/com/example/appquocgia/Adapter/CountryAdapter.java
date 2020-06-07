@@ -10,8 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,8 +22,10 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class CountryAdapter extends ArrayAdapter<JSONObject> {
     Activity context;
@@ -101,9 +101,15 @@ public class CountryAdapter extends ArrayAdapter<JSONObject> {
         textViewNameCountry.setText(object.getString("countryName"));
         url="https://img.geonames.org/flags/l/"+object.getString("countryCode").toLowerCase()+".gif";
         Picasso.with(this.context).load(url).resize(150,100).into(imageViewDialogFlag);
-        Toast.makeText(this.context,url,Toast.LENGTH_LONG).show();
-        textViewPopulation.setText(object.getString("population"));
-        textViewSquareArea.setText(object.getString("areaInSqKm"));
+        textViewPopulation.setText(NumberFormat.getNumberInstance(Locale.getDefault()).format(Integer.parseInt(object.getString("population")))+" người");
+        textViewSquareArea.setText(NumberFormat.getNumberInstance(Locale.getDefault()).format(Float.parseFloat(object.getString("areaInSqKm")))+ " m2");
+
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
 
         builder.setView(v);
         dialog = builder.create();

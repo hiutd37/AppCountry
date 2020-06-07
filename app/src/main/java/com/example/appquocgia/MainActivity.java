@@ -34,7 +34,8 @@ public class MainActivity extends AppCompatActivity implements API {
     ListView listView;
 
     ArrayList<JSONObject> arrayCountry=new ArrayList<>();
-    ArrayList<Country>countries=new ArrayList<>();
+    ArrayList<JSONObject> filterCountry = new ArrayList<>();
+ //   ArrayList<Country>countries=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,12 +43,12 @@ public class MainActivity extends AppCompatActivity implements API {
 
         addControls();
         addEvents();
-        countries.add(new Country("A",1,1,"s"));
-        countries.add(new Country("AB",1,1,"s"));
-        countries.add(new Country("B",1,1,"s"));
-        countries.add(new Country("BC",1,1,"s"));
-        countries.add(new Country("C",1,1,"s"));
-        countries.add(new Country("CD",1,1,"s"));
+//        countries.add(new Country("A",1,1,"s"));
+//        countries.add(new Country("AB",1,1,"s"));
+//        countries.add(new Country("B",1,1,"s"));
+//        countries.add(new Country("BC",1,1,"s"));
+//        countries.add(new Country("C",1,1,"s"));
+//        countries.add(new Country("CD",1,1,"s"));
     }
 
     private void addEvents() {
@@ -71,11 +72,19 @@ public class MainActivity extends AppCompatActivity implements API {
         api.execute("http://api.geonames.org/countryInfoJSON?formatted=true&lang=it&username=aporter&style=full");
     }
 
-    public void LayGiaTri(View view) {
-
+    public void LayGiaTri(View view) throws JSONException {
+            filterCountry.clear();
+            String qr=editTextCountry.getText().toString();
+            for(JSONObject o:arrayCountry){
+                if(o.getString("countryName").toLowerCase().contains(qr.toLowerCase())){
+                    filterCountry.add(o);
+                }
+            }
+            //Toast.makeText(this,filterCountry.toString(),Toast.LENGTH_LONG).show();
+            countryAdapter = new CountryAdapter(this,R.layout.item,filterCountry);
+            listView.setAdapter(countryAdapter);
+            countryAdapter.notifyDataSetChanged();
     }
-
-
 
     @Override
     public void setArrayListJson(ArrayList arrayList) throws JSONException {

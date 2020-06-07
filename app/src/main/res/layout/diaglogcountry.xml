@@ -108,6 +108,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FF9800"
-        android:text="QUAY LẠI TRANG CHỦ" />
+        android:text="QUAY LẠI TRANG CHỦ"
+        />
 
 </LinearLayout>

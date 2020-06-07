@@ -51,7 +51,6 @@ public class CountryAPI extends AsyncTask<String, String, ArrayList> {
         try {
            JSONArray jsonArray =new JSONArray();
            jsonArray=getJSONData(urls[0]);
-
             return convertToArrayList(jsonArray);
 
         } catch (JSONException e) {
