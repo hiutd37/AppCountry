@@ -4,6 +4,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -52,10 +54,21 @@ public class MainActivity extends AppCompatActivity implements API {
     }
 
     private void addEvents() {
-        editTextCountry.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        editTextCountry.addTextChangedListener(new TextWatcher() {
             @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                return false;
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                filterCountry.clear();
+                filterList(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
     }
@@ -72,19 +85,28 @@ public class MainActivity extends AppCompatActivity implements API {
         api.execute("http://api.geonames.org/countryInfoJSON?formatted=true&lang=it&username=aporter&style=full");
     }
 
-    public void LayGiaTri(View view) throws JSONException {
+    public void LayGiaTri(View view){
             filterCountry.clear();
             String qr=editTextCountry.getText().toString();
-            for(JSONObject o:arrayCountry){
+            filterList(qr);
+    }
+
+    private void filterList(String qr) {
+        for(JSONObject o:arrayCountry){
+            try {
                 if(o.getString("countryName").toLowerCase().contains(qr.toLowerCase())){
                     filterCountry.add(o);
                 }
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-            //Toast.makeText(this,filterCountry.toString(),Toast.LENGTH_LONG).show();
-            countryAdapter = new CountryAdapter(this,R.layout.item,filterCountry);
-            listView.setAdapter(countryAdapter);
-            countryAdapter.notifyDataSetChanged();
+        }
+        //Toast.makeText(this,filterCountry.toString(),Toast.LENGTH_LONG).show();
+        countryAdapter = new CountryAdapter(this,R.layout.item,filterCountry);
+        listView.setAdapter(countryAdapter);
+        countryAdapter.notifyDataSetChanged();
     }
+
 
     @Override
     public void setArrayListJson(ArrayList arrayList) throws JSONException {
