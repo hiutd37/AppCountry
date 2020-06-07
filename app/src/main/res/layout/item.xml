@@ -21,8 +21,8 @@
 
             <ImageView
                 android:id="@+id/imageViewFlag"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="100px"
+                android:layout_height="70px"
                 app:srcCompat="@drawable/vn" />
 
             <TextView
@@ -30,11 +30,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#FFEB3B"
+                android:background="#FFFFFF"
                 android:gravity="center|center_vertical"
                 android:text="Việt Nam"
-                android:textSize="24sp" />
+                android:textSize="8pt" />
         </TableRow>
-
     </TableLayout>
 </LinearLayout>
