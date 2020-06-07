@@ -4,16 +4,20 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.appquocgia.API.API;
 import com.example.appquocgia.API.CountryAPI;
+import com.example.appquocgia.Adapter.CountryAdapter;
 import com.example.appquocgia.Entity.Country;
 
 import org.json.JSONException;
@@ -24,13 +28,12 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements API {
 
-    private AutoCompleteTextView textCountry;
-    AlertDialog dialog;
-    ArrayAdapter countryAdapter;
+    EditText editTextCountry;
+    CountryAdapter countryAdapter;
     Button btnXacNhan;
     ListView listView;
 
-    ArrayList<JSONObject> arrayCountry=new ArrayList();
+    ArrayList<JSONObject> arrayCountry=new ArrayList<>();
     ArrayList<Country>countries=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,42 +51,41 @@ public class MainActivity extends AppCompatActivity implements API {
     }
 
     private void addEvents() {
-
+        editTextCountry.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                return false;
+            }
+        });
     }
 
     private void addControls() {
-        textCountry = findViewById(R.id.autoCompleteTextCountry);
+        editTextCountry = findViewById(R.id.editTextCountry);
         btnXacNhan = findViewById(R.id.btnXacNhan);
         listView = findViewById(R.id.listView);
 
-        countryAdapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,countries);
-
-        //listView.setAdapter(countryAdapter);
-        textCountry.setAdapter(countryAdapter);
-        textCountry.setAdapter(countryAdapter);
-        textCountry.setThreshold(1);
+        countryAdapter = new CountryAdapter(this,R.layout.item,arrayCountry);
+        listView.setAdapter(countryAdapter);
 
         CountryAPI api = new CountryAPI(this);
         api.execute("http://api.geonames.org/countryInfoJSON?formatted=true&lang=it&username=aporter&style=full");
     }
 
     public void LayGiaTri(View view) {
-        String text = "Ten quoc gia: " + this.textCountry.getText().toString();
-        Toast.makeText(this, text, Toast.LENGTH_LONG).show();
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        LayoutInflater inflater = getLayoutInflater();
-        View v = inflater.inflate(R.layout.diaglogcountry, null);
-        builder.setView(v);
-        dialog = builder.create();
-        dialog.show();
     }
+
 
 
     @Override
     public void setArrayListJson(ArrayList arrayList) throws JSONException {
-        this.arrayCountry=arrayList;
-        Toast.makeText(this,arrayCountry.toString(),Toast.LENGTH_LONG).show();
-        countryAdapter.notifyDataSetChanged();
+        this.arrayCountry.clear();
+        this.arrayCountry.addAll(arrayList);
+        //Toast.makeText(this,arrayCountry.toString(),Toast.LENGTH_LONG).show();
+//        for(int i=0;i<arrayCountry.size();i++){
+//            Toast.makeText(this,arrayCountry.get(i).getString("countryName"),Toast.LENGTH_LONG).show();
+//        }
+//        this.arrayCountry.add(new JSONObject());
+          countryAdapter.notifyDataSetChanged();
     }
 }

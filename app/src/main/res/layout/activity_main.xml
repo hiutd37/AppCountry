@@ -28,24 +28,28 @@
         android:textSize="8pt"
         android:textStyle="bold" />
 
-    <AutoCompleteTextView
-        android:layout_marginTop="10px"
-        android:layout_marginBottom="10px"
-        android:id="@+id/autoCompleteTextCountry"
-        android:layout_width="match_parent"
-        android:layout_height="53dp" />
-    <Button
-        android:onClick="LayGiaTri"
-        android:id="@+id/btnXacNhan"
-        android:gravity="center"
-        android:background="#FF9800"
+    <EditText
+        android:id="@+id/editTextCountry"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="XÁC NHẬN"/>
+        android:ems="10"
+        android:hint="Nhập tên nước"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/btnXacNhan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FF9800"
+        android:gravity="center"
+        android:onClick="LayGiaTri"
+        android:text="Tìm kiếm" />
 
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:clickable="false"
+        android:listSelector="@drawable/ic_launcher_background" />
 
 </LinearLayout>

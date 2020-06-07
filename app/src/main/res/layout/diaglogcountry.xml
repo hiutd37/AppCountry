@@ -11,34 +11,28 @@
         android:orientation="horizontal"
         android:gravity="center"
         >
+
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textStyle="bold"
-            android:textSize="9pt"
-            android:layout_marginTop="20px"
-            android:layout_marginBottom="20px"
-            android:text="Thông tin về quốc gia: "
-            android:textColor="#00BCD4"
-            />
-        <TextView
+            android:id="@+id/textViewNameCountry"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textSize="9pt"
             android:layout_marginTop="20px"
             android:layout_marginBottom="20px"
+            android:text="Việt Nam"
             android:textColor="#00BCD4"
-            android:text="Việt Nam" />
+            android:textSize="9pt"
+            android:textStyle="bold" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+
         <ImageView
-            android:layout_gravity="center_vertical"
-            android:layout_marginRight="15px"
+            android:id="@+id/imageViewDialogFlag"
             android:layout_width="300px"
             android:layout_height="200px"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="15px"
             android:scaleType="fitXY"
             android:src="@drawable/vietnam" />
     </LinearLayout>
@@ -61,11 +55,12 @@
                 />
 
             <TextView
+                android:id="@+id/textViewCountryName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Việt Nam"
+                android:layout_marginTop="10px"
                 android:layout_marginBottom="10px"
-                android:layout_marginTop="10px"/>
+                android:text="Việt Nam" />
         </TableRow>
 
         <TableRow>
@@ -79,12 +74,12 @@
                 android:layout_marginTop="10px"/>
 
             <TextView
+                android:id="@+id/textViewPopulation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="100000"
-                android:layout_marginBottom="10px"
                 android:layout_marginTop="10px"
-                />
+                android:layout_marginBottom="10px"
+                android:text="100000" />
         </TableRow>
 
         <TableRow>
@@ -98,20 +93,21 @@
                 android:layout_marginTop="10px"/>
 
             <TextView
+                android:id="@+id/textViewSquareArea"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="123.4"
-                android:layout_marginBottom="10px"
                 android:layout_marginTop="10px"
-                />
+                android:layout_marginBottom="10px"
+                android:text="123.4" />
         </TableRow>
 
     </TableLayout>
+
     <Button
+        android:id="@+id/buttonBack"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="QUAY LẠI TRANG CHỦ"
         android:background="#FF9800"
-        />
+        android:text="QUAY LẠI TRANG CHỦ" />
 
 </LinearLayout>
