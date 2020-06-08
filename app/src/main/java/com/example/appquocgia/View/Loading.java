@@ -1,4 +1,4 @@
-package com.example.appquocgia;
+package com.example.appquocgia.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.example.appquocgia.API.CountryAPI;
+import com.example.appquocgia.R;
 
 public class Loading extends AppCompatActivity {
     @Override

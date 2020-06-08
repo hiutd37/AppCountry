@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.example.appquocgia.MainActivity;
+import com.example.appquocgia.View.MainActivity;
 import com.example.appquocgia.SingleTon.SingleTon;
 
 import org.json.JSONArray;
@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 public class CountryAPI extends AsyncTask<String, String, ArrayList> {
     private Activity context;
-    private JSONArray jsonArray;
+    private JSONArray jsonArray=null;
     private  SingleTon singleTon;
     public CountryAPI(Activity context) {
         this.context=context;
@@ -100,9 +100,12 @@ public class CountryAPI extends AsyncTask<String, String, ArrayList> {
 
     private ArrayList convertToArrayList(JSONArray jsonArray) throws JSONException {
         ArrayList<JSONObject> objectArrayList=new ArrayList<>();
-        for (int i=0;i<jsonArray.length();i++){
-            objectArrayList.add(jsonArray.getJSONObject(i));
+        if(jsonArray!=null){
+            for (int i=0;i<jsonArray.length();i++){
+                objectArrayList.add(jsonArray.getJSONObject(i));
+            }
+            return objectArrayList;
         }
-        return objectArrayList;
+        return new ArrayList();
     }
 }

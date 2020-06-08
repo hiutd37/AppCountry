@@ -1,4 +1,4 @@
-package com.example.appquocgia;
+package com.example.appquocgia.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.example.appquocgia.Adapter.CountryAdapter;
+import com.example.appquocgia.R;
 import com.example.appquocgia.SingleTon.SingleTon;
 
 import org.json.JSONException;

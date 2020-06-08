@@ -7,7 +7,7 @@
     android:background="#FFFFFF"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".Loading">
+    tools:context=".View.Loading">
 
     <ImageView
         android:layout_width="300px"
