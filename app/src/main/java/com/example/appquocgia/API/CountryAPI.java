@@ -1,9 +1,12 @@
 package com.example.appquocgia.API;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.example.appquocgia.API.API;
+import com.example.appquocgia.MainActivity;
+import com.example.appquocgia.SingleTon.SingleTon;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -14,16 +17,16 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
 public class CountryAPI extends AsyncTask<String, String, ArrayList> {
-    private API api;
+    private Activity context;
     private JSONArray jsonArray;
-
-    public CountryAPI(API api) {
-        this.api=api;
+    private  SingleTon singleTon;
+    public CountryAPI(Activity context) {
+        this.context=context;
+        singleTon=SingleTon.getInstance();
     }
     @Override
     protected void onPreExecute() {
@@ -33,11 +36,14 @@ public class CountryAPI extends AsyncTask<String, String, ArrayList> {
     @Override
     protected void onPostExecute(ArrayList arrayList) {
         super.onPostExecute(arrayList);
-        try {
-            api.setArrayListJson(arrayList);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        singleTon.setArrayListJson(arrayList);
+        callActivity();
+    }
+
+    private void callActivity() {
+        Intent intent = new Intent(this.context, MainActivity.class);
+        this.context.startActivity(intent);
+        this.context.finish();
     }
 
     @Override
