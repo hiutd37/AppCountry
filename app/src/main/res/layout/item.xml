@@ -21,8 +21,8 @@
 
             <ImageView
                 android:id="@+id/imageViewFlag"
-                android:layout_width="100px"
-                android:layout_height="70px"
+                android:layout_width="120px"
+                android:layout_height="80px"
                 app:srcCompat="@drawable/vn" />
 
             <TextView
