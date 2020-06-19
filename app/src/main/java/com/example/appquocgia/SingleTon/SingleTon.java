@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class SingleTon {
     private static SingleTon instance=null;
-    private static ArrayList<JSONObject> objects;
+    public static ArrayList<JSONObject> objects;
     private SingleTon() {
         objects=new ArrayList<>();
     }

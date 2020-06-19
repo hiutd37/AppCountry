@@ -102,7 +102,7 @@ public class CountryAdapter extends ArrayAdapter<JSONObject> {
         url="https://img.geonames.org/flags/l/"+object.getString("countryCode").toLowerCase()+".gif";
         Picasso.with(this.context).load(url).resize(150,100).into(imageViewDialogFlag);
         textViewPopulation.setText(NumberFormat.getNumberInstance(Locale.getDefault()).format(Integer.parseInt(object.getString("population")))+" người");
-        textViewSquareArea.setText(NumberFormat.getNumberInstance(Locale.getDefault()).format(Float.parseFloat(object.getString("areaInSqKm")))+ " m2");
+        textViewSquareArea.setText(NumberFormat.getNumberInstance(Locale.getDefault()).format(Float.parseFloat(object.getString("areaInSqKm")))+ " km2");
 
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
