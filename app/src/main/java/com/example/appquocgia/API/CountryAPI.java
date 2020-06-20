@@ -29,6 +29,10 @@ public class CountryAPI extends AsyncTask<String, String, ArrayList> {
         this.context=context;
         singleTon=SingleTon.getInstance();
     }
+
+    public CountryAPI() {
+    }
+
     @Override
     protected void onPreExecute() {
         super.onPreExecute();

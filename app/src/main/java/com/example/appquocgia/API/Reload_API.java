@@ -12,10 +12,9 @@ import com.example.appquocgia.R;
 import java.util.ArrayList;
 
 public class Reload_API extends CountryAPI {
-    ProgressDialog progressBar;
-
-    public Reload_API(Activity context) {
-        super(context);
+    Listening listening;
+    public Reload_API(Listening listening) {
+        this.listening = listening;
 }
 
     @Override
@@ -28,9 +27,7 @@ public class Reload_API extends CountryAPI {
 
     @Override
     protected void onPostExecute(ArrayList arrayList) {
-
-        singleTon.objects.clear();
-        singleTon.setArrayListJson(arrayList);
+        this.listening.setChangeArrayList(arrayList);
 //        if (progressBar.isShowing()) {
 //            progressBar.dismiss();
 //        }

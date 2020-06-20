@@ -1,6 +1,10 @@
 package com.example.appquocgia.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -15,6 +19,7 @@ import android.widget.Toast;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.appquocgia.API.CountryAPI;
+import com.example.appquocgia.API.Listening;
 import com.example.appquocgia.API.Reload_API;
 import com.example.appquocgia.Adapter.CountryAdapter;
 import com.example.appquocgia.R;
@@ -27,7 +32,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Listening {
 
     EditText editTextCountry;
     CountryAdapter countryAdapter;
@@ -84,11 +89,8 @@ public class MainActivity extends AppCompatActivity {
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                 new Reload_API(MainActivity.this).execute("http://api.geonames.org/countryInfoJSON?formatted=true&lang=it&username=aporter&style=full");
+                new Reload_API(MainActivity.this).execute("http://api.geonames.org/countryInfoJSON?formatted=true&lang=it&username=aporter&style=full");
                 shuffle();
-                mSwipeRefreshLayout.setRefreshing(false);
-                Toast.makeText(MainActivity.this,singleTon.toString(),Toast.LENGTH_LONG).show();
-
             }
         }
         );
@@ -109,9 +111,22 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-        countryAdapter = new CountryAdapter(this,R.layout.item,filterCountry);
+            refreshList(filterCountry);
+    }
+
+    @Override
+    public void setChangeArrayList(ArrayList list) {
+        arrayCountry=list;
+        mSwipeRefreshLayout.setRefreshing(false);
+       // Toast.makeText(MainActivity.this,list.toString(),Toast.LENGTH_LONG).show();
+
+        refreshList(arrayCountry);
+    }
+
+    private void refreshList(ArrayList<JSONObject> list) {
+        countryAdapter.clear();
+        countryAdapter = new CountryAdapter(this,R.layout.item,list);
         listView.setAdapter(countryAdapter);
         countryAdapter.notifyDataSetChanged();
     }
-
 }
