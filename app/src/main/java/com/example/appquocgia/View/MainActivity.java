@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements Listening {
     }
 
     private void refreshList(ArrayList<JSONObject> list) {
-        countryAdapter.clear();
+//        countryAdapter.clear();
         countryAdapter = new CountryAdapter(this,R.layout.item,list);
         listView.setAdapter(countryAdapter);
         countryAdapter.notifyDataSetChanged();
