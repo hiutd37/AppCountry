@@ -56,15 +56,15 @@
                 android:hint="Nhập tên nước"
                 android:inputType="textCapSentences" />
 
-            <Button
-                android:id="@+id/btnXacNhan"
-                android:layout_width="wrap_content"
-                android:layout_height="70px"
-                android:background="@drawable/buttonbackground"
-                android:gravity="center"
-                android:onClick="LayGiaTri"
-                android:text="Tìm kiếm"
-                android:textColor="#ffffff" />
+<!--            <Button-->
+<!--                android:id="@+id/btnXacNhan"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="70px"-->
+<!--                android:background="@drawable/buttonbackground"-->
+<!--                android:gravity="center"-->
+<!--                android:onClick="LayGiaTri"-->
+<!--                android:text="Tìm kiếm"-->
+<!--                android:textColor="#ffffff" />-->
 
         </LinearLayout>
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout

@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements Listening {
     }
     private void addControls() {
         editTextCountry = findViewById(R.id.editTextCountry);
-        btnXacNhan = findViewById(R.id.btnXacNhan);
+//        btnXacNhan = findViewById(R.id.btnXacNhan);
         listView = findViewById(R.id.listView);
         mSwipeRefreshLayout = findViewById(R.id.swipeToRefresh);
 
