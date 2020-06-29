@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.ListView;
 
 import com.example.appquocgia.View.MainActivity;
 import com.example.appquocgia.SingleTon.SingleTon;
@@ -21,13 +22,17 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class CountryAPI extends AsyncTask<String, String, ArrayList> {
-    private Activity context;
+    protected Activity context;
     private JSONArray jsonArray=null;
-    private  SingleTon singleTon;
+    protected  SingleTon singleTon;
     public CountryAPI(Activity context) {
         this.context=context;
         singleTon=SingleTon.getInstance();
     }
+
+    public CountryAPI() {
+    }
+
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
@@ -37,7 +42,7 @@ public class CountryAPI extends AsyncTask<String, String, ArrayList> {
     protected void onPostExecute(ArrayList arrayList) {
         super.onPostExecute(arrayList);
         singleTon.setArrayListJson(arrayList);
-        callActivity();
+            callActivity();
     }
 
     private void callActivity() {
